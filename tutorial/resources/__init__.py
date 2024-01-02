@@ -69,17 +69,27 @@ class DataGenerator:
         self.random = Random(seed)
 
     def generate_signup(self, date) -> Signup:
-        registered_at = self.fake.date_time_between_dates(date, date + timedelta(days=1))
+        registered_at = self.fake.date_time_between_dates(
+            date, date + timedelta(days=1)
+        )
 
         return Signup(
             name=self.fake.name(),
             email=self.fake.email(),
             country=self.fake.country(),
-            signup_source=self.fake.random_element(["google", "facebook", "twitter", "other"]),
+            signup_source=self.fake.random_element(
+                ["google", "facebook", "twitter", "other"]
+            ),
             referral=self.fake.uri(),
-            signup_purpose=self.fake.random_element(["personal", "business", "education", "other"]),
-            subscription_level=self.fake.random_element(["trial", "free", "premium", "enterprise"]),
-            payment_method=self.fake.random_element(["credit_card", "paypal", "check", "other"]),
+            signup_purpose=self.fake.random_element(
+                ["personal", "business", "education", "other"]
+            ),
+            subscription_level=self.fake.random_element(
+                ["trial", "free", "premium", "enterprise"]
+            ),
+            payment_method=self.fake.random_element(
+                ["credit_card", "paypal", "check", "other"]
+            ),
             sso_id=self.fake.uuid4(),
             email_verified=self.fake.boolean(),
             enabled=self.fake.boolean(),
